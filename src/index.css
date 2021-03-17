@@ -1,13 +1,125 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  padding-top: 100px;
+  font-family: monospace;
+  background-color: coral;
+  color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+}
+
+hr {
+  border: 1px solid #fff;
+  margin: 20px 0;
+}
+
+hr.light {
+  border: 1px dotted rgba(255, 187, 148, 0.3);
+  margin: 10px 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bolder;
+}
+
+h1 {
+  font-size: 64px;
+}
+h2 {
+  font-size: 56px;
+}
+h3 {
+  font-size: 48px;
+}
+h4 {
+  font-size: 40px;
+}
+h5 {
+  font-size: 32px;
+}
+h6 {
+  font-size: 24px;
+}
+
+.btn {
+  border-radius: 10px;
+  padding: 10px 25px;
+  transition: all 0.1s ease-in-out;
+  font-weight: bold;
+  display: block;
+  margin: 20px 0;
+}
+
+.btn,
+.btn:visited,
+.btn:focus,
+.btn:active,
+.btn:hover {
+  border: none;
+  outline: none;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: rgb(192, 93, 31);
+  color: rgb(247, 226, 181);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+  transform: translateY(0px);
+  box-shadow: none;
+}
+
+.btn:disabled:hover {
+  color: rgba(16, 16, 16, 0.3);
+  background-color: rgba(239, 239, 239, 0.3);
+  transform: none;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.answer {
+  width: 100%;
+  margin: 0;
+  border-radius: 0;
+}
+.answer:hover {
+  background-color: antiquewhite;
+  color: rgb(82, 49, 28);
+}
+
+.selected {
+  background-color: rgb(192, 93, 31);
+  color: rgb(247, 226, 181);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.backdrop {
+  background-color: #fff;
+  padding: 0 30px;
+  color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  z-index: 1000;
 }
