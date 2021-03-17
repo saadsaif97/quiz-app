@@ -18,23 +18,40 @@ const EndScreen: React.FC<EndScreenPropTypes> = ({
   startQuiz,
   score,
 }) => {
+  const scoreColor = score < 5 ? 'orangered' : 'green'
+  const scoreImoji = score < 5 ? '😔' : '😀'
+
   return (
     <div className='backdrop'>
-      <h2>GameOver</h2>
-      <h4>Score: {score}/10</h4>
-      {userAnswers.map(({ question, correct_answer, user_answer }, idx) => (
-        <div style={{ maxWidth: '1280px', justifySelf: 'left' }} key={idx}>
-          <h6>{htmlDecode(question)}</h6>
-          <p>Correct Answer: {correct_answer}</p>
-          <p>Your Answer: {user_answer}</p>
-        </div>
-      ))}
+      <h2>Quiz Completed</h2>
+      <h4>
+        Score:{' '}
+        <span style={{ color: scoreColor }}>
+          {scoreImoji} {score}
+        </span>
+        /10
+      </h4>
+      <hr className='light' />
+      <div
+        style={{
+          maxWidth: '1100px',
+          margin: '0 auto',
+        }}
+      >
+        {userAnswers.map(({ question, correct_answer, user_answer }, idx) => (
+          <div key={idx} style={{ marginBottom: '10px' }}>
+            <h6>{htmlDecode(question)}</h6>
+            <p>Correct Answer: {correct_answer}</p>
+            <p>Your Answer: {user_answer}</p>
+          </div>
+        ))}
+      </div>
       <button
         className='btn'
         onClick={() => startQuiz()}
         style={{ border: '2px solid #e9e9e9' }}
       >
-        Restart Game
+        Restart Quiz
       </button>
     </div>
   )

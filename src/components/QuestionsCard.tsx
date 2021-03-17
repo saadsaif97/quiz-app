@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { htmlDecode } from '../utils/utils'
 
 type QuestionCardProps = {
@@ -24,26 +24,6 @@ const QuestionsCard: React.FC<QuestionCardProps> = ({
   setScore,
   setGameOver,
 }) => {
-  const appContainer = useRef() as React.MutableRefObject<HTMLDivElement>
-
-  useEffect(() => {
-    const detectClickOutsideCard = (e: any): void => {
-      // if the click is in the card, do nothing and return
-      if (appContainer.current.contains(e.target)) return
-
-      console.log('outside')
-      // else remove userAnswer from current number
-      setUserAnswers((prev: any) =>
-        prev.filter((ans: any, i: number) => i !== number)
-      )
-    }
-
-    document.addEventListener('click', detectClickOutsideCard)
-    return () => {
-      document.removeEventListener('click', detectClickOutsideCard)
-    }
-  }, [])
-
   const checkAndIncreaseScore = () => {
     // user has selected the answer and answer is correct
     if (
@@ -54,10 +34,9 @@ const QuestionsCard: React.FC<QuestionCardProps> = ({
       setScore(score + 1)
     }
   }
-  console.log('userAnswers', userAnswers)
 
   return (
-    <div style={{ maxWidth: '400px' }} ref={appContainer}>
+    <div style={{ maxWidth: '400px' }}>
       <h5>{htmlDecode(questions[number].question.question)}</h5>
       <hr className='light' />
       {questions[number].answers.map((answer: string, idx: number) => (
